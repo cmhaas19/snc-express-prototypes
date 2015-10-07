@@ -27,8 +27,12 @@ body,
 .card.card-add {
   border-color: #ebebeb;
 }
+.card.card-add .card-icon {
+  font-size: 28px;
+  position: static;
+  text-align: center;
+}
 .card.card-add .card-title {
-  margin-top: 30px;
   color: #d6d6d6;
   text-align: center;
 }
@@ -118,6 +122,10 @@ body,
   min-height: 600px;
 }
 .details-container .section {
+  margin-bottom: 20px;
   padding-bottom: 30px;
   border-bottom: solid 1px #bdc0c4;
+}
+.details-container .section:last-child {
+  border-bottom: 0;
 }

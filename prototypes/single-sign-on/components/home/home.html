@@ -9,7 +9,7 @@
 						<label>Enable SSO</label>
 					</div>
 					<div class="property-input">
-						<input bs-switch type="checkbox" ng-model="model.settings.enabled" />
+						<input bs-switch type="checkbox" ng-model="model.settings.enabled" switch-size="small" />
 					</div>
 				</div>
 				<div class="property">
@@ -17,7 +17,7 @@
 						<label>Enable Debugging</label>
 					</div>
 					<div class="property-input">
-						<input bs-switch type="checkbox" ng-model="model.settings.debugging" />
+						<input bs-switch type="checkbox" ng-model="model.settings.debugging" switch-size="small" />
 					</div>
 				</div>
 				<div class="property">
@@ -25,7 +25,7 @@
 						<label>Auto Import Users</label>
 					</div>
 					<div class="property-input">
-						<input bs-switch type="checkbox" ng-model="model.settings.autoImport" />
+						<input bs-switch type="checkbox" ng-model="model.settings.autoImport" switch-size="small" />
 					</div>
 				</div>
 			</div>			
@@ -41,9 +41,7 @@
 							<card name="idp.name" type="idp.type" is-default="idp.isDefault" />
 						</div>
 						<div class="col-sm-4 col-md-3">
-							<div class="card card-add">
-								<span class="card-title">Create New</span>
-							</div>
+							<new-card />
 						</div>
 					</div>
 				</section>
@@ -53,12 +51,23 @@
 					</header>
 					<div class="row">
 						<div class="col-sm-4 col-md-3" ng-repeat="idp in model.federations">
-							<card name="idp.name" type="idp.type" is-default="idp.isDefault" />
+							<card name="idp.name" type="idp.type" />
 						</div>
 						<div class="col-sm-4 col-md-3">
-							<div class="card card-add">
-								<span class="card-title">Create New</span>
-							</div>
+							<new-card />
+						</div>
+					</div>
+				</section>
+				<section class="section">
+					<header>
+						<h4 class="section-title">Certificates</h4>
+					</header>
+					<div class="row">
+						<div class="col-sm-4 col-md-3" ng-repeat="idp in model.federations">
+							<card name="idp.name" type="idp.type" />
+						</div>
+						<div class="col-sm-4 col-md-3">
+							<new-card />
 						</div>
 					</div>
 				</section>
