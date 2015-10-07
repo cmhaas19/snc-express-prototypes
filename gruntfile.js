@@ -10,10 +10,10 @@ module.exports = function(grunt) {
         livereload: true
       },
       html: {
-          files: ['index.html', 'app/views/**/*.html']
+          files: ['index.html', 'prototypes/**/*.html']
       },
       scripts: {
-        files: ['app/**/*.js','assets/scripts/**/*.js'],
+        files: ['prototypes/**/*.js','assets/scripts/**/*.js'],
         options: {
           spawn: false
         }

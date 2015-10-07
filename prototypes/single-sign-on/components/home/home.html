@@ -1,0 +1,68 @@
+
+<div class="container-fluid" ng-controller="homeController as model">
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="properties-container">
+				<h4 class="section-title">Properties</h4>
+				<div class="property">
+					<div class="property-label">
+						<label>Enable SSO</label>
+					</div>
+					<div class="property-input">
+						<input bs-switch type="checkbox" ng-model="model.settings.enabled" />
+					</div>
+				</div>
+				<div class="property">
+					<div class="property-label">
+						<label>Enable Debugging</label>
+					</div>
+					<div class="property-input">
+						<input bs-switch type="checkbox" ng-model="model.settings.debugging" />
+					</div>
+				</div>
+				<div class="property">
+					<div class="property-label">
+						<label>Auto Import Users</label>
+					</div>
+					<div class="property-input">
+						<input bs-switch type="checkbox" ng-model="model.settings.autoImport" />
+					</div>
+				</div>
+			</div>			
+		</div>
+		<div class="col-sm-9">
+			<div class="details-container">
+				<section class="section">
+					<header>
+						<h4 class="section-title">Identity Providers</h4>
+					</header>
+					<div class="row">
+						<div class="col-sm-4 col-md-3" ng-repeat="idp in model.identityProviders">
+							<card name="idp.name" type="idp.type" is-default="idp.isDefault" />
+						</div>
+						<div class="col-sm-4 col-md-3">
+							<div class="card card-add">
+								<span class="card-title">Create New</span>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="section">
+					<header>
+						<h4 class="section-title">Federations</h4>
+					</header>
+					<div class="row">
+						<div class="col-sm-4 col-md-3" ng-repeat="idp in model.federations">
+							<card name="idp.name" type="idp.type" is-default="idp.isDefault" />
+						</div>
+						<div class="col-sm-4 col-md-3">
+							<div class="card card-add">
+								<span class="card-title">Create New</span>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</div>

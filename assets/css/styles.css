@@ -7,20 +7,60 @@ body,
 .nav-main-container {
   height: 100%;
 }
+.nav-main-container {
+  margin-top: 50px;
+  clear: both;
+}
+.main-container {
+  margin-left: 283px;
+  height: 100%;
+  position: relative;
+  overflow: auto;
+}
+.card {
+  padding: 15px;
+  border: solid 1px #bdc0c4;
+  position: relative;
+  border-radius: 4px;
+  min-height: 100px;
+}
+.card.card-add {
+  border-color: #ebebeb;
+}
+.card.card-add .card-title {
+  margin-top: 30px;
+  color: #d6d6d6;
+  text-align: center;
+}
+.card-title {
+  font-size: 18px;
+  display: block;
+}
+.card-type {
+  font-size: 12px;
+  display: block;
+}
+.card-icon {
+  font-size: 48px;
+  color: #e6e8ea;
+  display: block;
+  position: absolute;
+  right: 15px;
+  bottom: -4px;
+}
+.card-default {
+  font-size: 18px;
+  color: green;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
 .navbar-brand {
-  background-image: url(../images/header-left.png);
-  width: 325px;
-  height: 50px;
+  padding: 0;
 }
 .navbar-inverse {
   background-color: #303a45;
   border-color: #303a45;
-}
-.navbar-right {
-  background-image: url(../images/header-right.png);
-  width: 351px;
-  height: 51px;
-  float: left;
 }
 .side-nav {
   background-image: url(../images/navigation.png);
@@ -28,15 +68,56 @@ body,
   background-color: #303a45;
   width: 283px;
   position: fixed;
-  top: 52px;
+  top: 50px;
   bottom: 0;
 }
-.nav-main-container {
-  margin-top: 52px;
+.main-container .navbar {
+  padding: 6px 0;
+  border-radius: 0;
+  border-bottom: 1px solid #bdc0c4;
+  box-shadow: rgba(0, 0, 0, 0.08) 0 1px 2px;
+}
+.main-container .navbar .navbar-title {
+  font-size: 13px;
+  font-weight: bold;
+  margin: 9px 0 9px 5px;
+  vertical-align: middle;
+  color: #485563;
+}
+.main-container .navbar-default {
+  background-color: #e6e8ea;
+  border-color: #d4d7db;
+}
+.property {
+  margin-bottom: 20px;
+}
+.property:before,
+.property:after {
+  content: " ";
+  display: table;
+}
+.property:after {
   clear: both;
 }
-.main-container {
-  margin-left: 283px;
-  height: calc(48%);
-  overflow: auto;
+.property .property-label {
+  float: left;
+}
+.property .property-label label {
+  font-weight: normal;
+  line-height: 32px;
+}
+.property .property-input {
+  float: right;
+}
+.section-title {
+  margin-bottom: 25px;
+}
+.details-container {
+  border-left: solid 1px #bdc0c4;
+  padding-left: 30px;
+  min-height: 600px;
+}
+.details-container .section {
+  padding-bottom: 30px;
+  border-bottom: solid 1px #bdc0c4;
 }

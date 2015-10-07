@@ -1,0 +1,49 @@
+
+@import "mixins.less";
+
+.card {
+	padding: 15px;
+	border: solid 1px #bdc0c4;
+	//border: solid 2px #969798;
+	position: relative;
+	border-radius: 4px;
+	min-height: 100px;
+
+	&.card-add {
+		border-color: #ebebeb;
+
+		.card-title {
+			margin-top: 30px;
+			color: #d6d6d6;
+			text-align: center;
+		}
+	}
+}
+
+.card-title {
+	font-size: 18px;
+	display: block;
+}
+
+.card-type {
+	font-size: 12px;
+	display: block;
+}
+
+.card-icon {
+	font-size: 48px;
+	//color: #337ab7;
+	color: #e6e8ea;
+	display: block;
+	position: absolute;
+	right: 15px;
+    bottom: -4px;
+}
+
+.card-default {
+	font-size: 18px;
+	color: green;
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+}
