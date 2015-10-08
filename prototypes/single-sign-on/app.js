@@ -23,11 +23,13 @@
         $routeProvider
             .when("/", {
                 templateUrl: rootUrl + "/components/home/home.html",
-                bodyClass: "home"
+                bodyClass: "home",
+                backEnabled: false
             })
             .when("/identity-provider", {
                 templateUrl: rootUrl + "/components/identity-provider/idp.html",
-                bodyClass: "idp"
+                bodyClass: "idp",
+                backEnabled: true
             })             
             .otherwise({
                 redirectTo: "/"
@@ -38,6 +40,7 @@
 
         $rootScope.$on("$routeChangeSuccess", function (event, currentRoute, previousRoute) {
             $rootScope.bodyClass = currentRoute.bodyClass;
+            $rootScope.backEnabled = currentRoute.backEnabled;
         });
     }]);
 

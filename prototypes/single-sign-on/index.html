@@ -6,43 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title ng-bind="$root.title">SNC - Prototype - Single Sign-On</title>
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/heisenberg.css" rel="stylesheet" type="text/css" />
     <link href="/assets/css/bootstrap-switch.css" rel="stylesheet" type="text/css" />
     <link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body ng-class="$root.bodyClass">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img src="/assets/images/header-left.png" />
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <div class="navbar-right">
-                    <img src="/assets/images/header-right.png" />
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div class="faux-header">
+        <img src="/assets/images/header-left.png" class="pull-left" />
+        <img src="/assets/images/header-right.png" class="pull-right" />
+    </div>
 
     <div class="nav-main-container">
         <div class="side-nav">
             
-        </div>    
+        </div>
         <div class="main-container">
-            <nav class="navbar navbar-default" style="margin-bottom:20px;">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <h1 style="display: inline-block;" class="navbar-title ng-binding">Single Sign-On Central</h1>
-                    </div>
-                    <div class="nav navbar-right">
-                        
-                    </div>
-                </div>
+            <nav class="navbar navbar-default" role="navigation">
+               <div class="container-fluid">
+                   <div class="navbar-header">            
+                       <button class="btn btn-default icon-chevron-left navbar-btn" ng-show="$root.backEnabled" onclick="history.back();"></button>
+                       <h1 style="display:inline-block;" class="navbar-title">Single Sign-On Central</h1>
+                   </div>      
+                   <div class="nav navbar-right">
+                       <a href="#/" class="btn btn-default navbar-btn" ng-show="$root.backEnabled">Home</a>
+                   </div>
+               </div>
             </nav>
             <div class="view-container">
                 <div class="view-frame" ng-view></div>

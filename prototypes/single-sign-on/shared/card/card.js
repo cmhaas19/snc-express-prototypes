@@ -7,15 +7,16 @@
                 name: "=",
                 type: "=",
                 icon: "@",
-                isDefault: "="
+                isDefault: "=",
+                url: "@"
             },
             template: 
-                "<div class='card'>" +
+                "<a href='{{ url }}' class='card'>" +
                     "<span class='card-title'>{{ name }}</span>" +
                     "<span class='card-type'>{{ type }}</span>" +
                     "<span class='card-icon {{ icon }}'><i class='fa fa-lock' /></span>" +
                     "<span class='card-default' ng-show='isDefault'><i class='fa fa-check-circle-o' /></span>" +
-                "</div>"
+                "</a>"
         };
     };
 

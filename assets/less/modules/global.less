@@ -1,4 +1,6 @@
 
+@import "mixins.less";
+
 html,
 body {
 	overflow: hidden;
@@ -6,18 +8,20 @@ body {
 
 html,
 body,
-.nav-main-container {
+.nav-main-container,
+.main-container,
+.view-container,
+.view-frame,
+.view-frame > .container-fluid {
 	height: 100%;
 }
 
 .nav-main-container {
-	margin-top: 50px;
-	clear: both;
+	.clearfix();
 }
 
 .main-container {
 	margin-left: 283px;
-	height: 100%;
 	position: relative;
 	overflow: auto;
 }

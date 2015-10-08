@@ -4,13 +4,13 @@
         return {
             restrict: "AE",
             scope: {
-                
+                url: "@"
             },
             template: 
-                "<div class='card card-add'>" +
+                "<a href='{{ url }}' class='card card-add'>" +
                     "<span class='card-icon'><i class='fa fa-plus-circle' /></span>" +
                     "<span class='card-title'>Create New</span>" +
-                "</div>"
+                "</a>"
         };
     };
 
