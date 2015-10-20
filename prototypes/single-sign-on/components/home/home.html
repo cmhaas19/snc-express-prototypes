@@ -1,86 +1,55 @@
 
 <div class="container-fluid" ng-controller="homeController as model">
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="properties-container">
-				<h4 class="section-title">Properties</h4>
-				<div class="property">
-					<div class="property-label">
-						<label>Enable SSO</label>
-					</div>
-					<div class="property-input">
-						<div class="input-switch">
-							<input id="switch1" type="checkbox" checked="checked" name="switch1">
-							<label aria-hidden="true" class="switch" for="switch1"></label>
-						</div>
-					</div>
+	<div class="details-container">
+		<section class="section">
+			<header>
+				<h4 class="section-title">Identity Providers (IdP)</h4>
+			</header>
+			<div class="row">
+				<div class="col-sm-4 col-md-3" ng-repeat="idp in model.identityProviders">
+					<card name="idp.name" 
+						  type="idp.type" 
+						  url="#/identity-provider" 
+						  icon="icon-database" 
+						  css-class="card-idp" 
+						  badge-text="idp.badgeText" />
 				</div>
-				<div class="property">
-					<div class="property-label">
-						<label>Enable Debugging</label>
-					</div>
-					<div class="property-input">
-						<div class="input-switch">
-							<input id="switch2" type="checkbox" name="switch2">
-							<label aria-hidden="true" class="switch" for="switch2"></label>
-						</div>
-					</div>
+				<div class="col-sm-4 col-md-3">
+					<new-card url="#/identity-provider" />
 				</div>
-				<div class="property">
-					<div class="property-label">
-						<label>Auto Import Users</label>
-					</div>
-					<div class="property-input">
-						<div class="input-switch">
-							<input id="switch3" type="checkbox" checked="checked" name="switch3">
-							<label aria-hidden="true" class="switch" for="switch3"></label>
-						</div>
-					</div>
-				</div>
-			</div>			
-		</div>
-		<div class="col-sm-9">
-			<div class="details-container">
-				<section class="section">
-					<header>
-						<h4 class="section-title"><strong>Identity Providers</strong></h4>
-					</header>
-					<div class="row">
-						<div class="col-sm-4 col-md-3" ng-repeat="idp in model.identityProviders">
-							<card name="idp.name" type="idp.type" is-default="idp.isDefault" url="#/identity-provider" />
-						</div>
-						<div class="col-sm-4 col-md-3">
-							<new-card url="#/identity-provider" />
-						</div>
-					</div>
-				</section>
-				<section class="section">
-					<header>
-						<h4 class="section-title">Federations</h4>
-					</header>
-					<div class="row">
-						<div class="col-sm-4 col-md-3" ng-repeat="idp in model.federations">
-							<card name="idp.name" type="idp.type" />
-						</div>
-						<div class="col-sm-4 col-md-3">
-							<new-card />
-						</div>
-					</div>
-				</section>
-				<section class="section">
-					<header>
-						<h4 class="section-title">Certificates</h4>
-					</header>
-					<div class="row">
-						<div class="col-sm-4 col-md-3" ng-repeat="idp in model.federations">
-							<card name="idp.name" type="idp.type" />
-						</div>
-						<div class="col-sm-4 col-md-3">
-							<new-card />
-						</div>
-					</div>
-				</section>
 			</div>
-		</div>
+		</section>
+		<section class="section">
+			<header>
+				<h4 class="section-title">Federations</h4>
+			</header>
+			<div class="row">
+				<div class="col-sm-4 col-md-3" ng-repeat="idp in model.federations">
+					<card name="idp.name" 
+						  type="idp.type" 
+						  icon="icon-key" 
+						  css-class="card-federation" />
+				</div>
+				<div class="col-sm-4 col-md-3">
+					<new-card />
+				</div>
+			</div>
+		</section>
+		<section class="section">
+			<header>
+				<h4 class="section-title">Certificates</h4>
+			</header>
+			<div class="row">
+				<div class="col-sm-4 col-md-3" ng-repeat="idp in model.federations">
+					<card name="idp.name" 
+						  type="idp.type" 
+						  icon="icon-article-document" 
+						  css-class="card-certificate" />
+				</div>
+				<div class="col-sm-4 col-md-3">
+					<new-card />
+				</div>
+			</div>
+		</section>
 	</div>
 </div>

@@ -10,7 +10,18 @@
         };
 
         idpService.getAll().then(function(data){
-    		model.identityProviders = data;
+
+            var viewModels = data.map(function(item){
+                return {
+                    name: item.name,
+                    type: item.type,
+                    badgeText: (item.isDefault ? "Default" : ""),
+                    icon: "fa fa-database",
+                    cssClass: "card-idp"
+                };
+            });
+
+    		model.identityProviders = viewModels;
         });
 
         federationService.getAll().then(function(data){

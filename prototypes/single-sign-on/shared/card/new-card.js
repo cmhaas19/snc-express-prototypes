@@ -8,8 +8,9 @@
             },
             template: 
                 "<a href='{{ url }}' class='card card-add'>" +
-                    "<span class='card-icon'><i class='fa fa-plus-circle' /></span>" +
-                    "<span class='card-title'>Create New</span>" +
+                    "<div class='card-content'>" + 
+                        "<span class='card-title'><span class='icon-add-circle-empty' /> Add New</span>" +
+                    "</div>" +
                 "</a>"
         };
     };

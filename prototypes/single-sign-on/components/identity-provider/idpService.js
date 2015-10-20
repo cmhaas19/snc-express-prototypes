@@ -5,10 +5,11 @@
     	var data = [{
     		name: "ADFS",
     		type: "SAML 2.0",
-    		isDefault: true
+            isDefault: true
     	}, {
     		name: "SiteMinder",
-    		type: "SAML 2.0"
+    		type: "SAML 2.0",
+            isDefault: false
     	}];
         
         var getAll = function(){
