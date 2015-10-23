@@ -34,6 +34,9 @@ body,
   color: inherit;
   text-decoration: none;
 }
+.card:hover .card-action {
+  color: #fff;
+}
 .card .card-title {
   display: block;
   font-size: 24px;
@@ -45,12 +48,15 @@ body,
   position: relative;
   top: -4px;
 }
+.card .card-tooltip {
+  white-space: nowrap;
+}
 .card .card-badge {
   border-radius: 3px;
   font-weight: normal;
   font-size: 13px;
 }
-.card .card-type {
+.card .card-subtitle {
   font-size: 13px;
   font-weight: 300;
 }
@@ -62,6 +68,7 @@ body,
   vertical-align: center;
   margin-top: 70%;
 }
+.card .card-inner,
 .card .card-thumbnail,
 .card .card-content {
   height: 100%;
@@ -94,36 +101,32 @@ body,
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px 0;
 }
 .card .card-content {
-  padding: 20px 10px;
+  padding: 25px 10px 20px 10px;
   padding-left: 55px;
   border: solid 1px #e9e9e9;
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  -webkit-border-bottom-left-radius: 0;
-  -webkit-border-top-left-radius: 0;
-  -moz-border-radius-topright: 3px;
-  -moz-border-radius-bottomright: 3px;
-  -moz-border-radius-bottomleft: 0;
-  -moz-border-radius-topleft: 0;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  -moz-background-clip: padding-box;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
+  border-radius: 3px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px 0;
   -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px 0;
 }
-.card.card-add {
-  border: dashed 2px #e7e9eb;
-  border-radius: 3px;
+.card .card-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.card .card-action {
+  display: inline-block;
+  margin-left: 10px;
+  color: inherit;
+  cursor: pointer;
+}
+.card .card-action:first-child {
+  margin-left: 0;
 }
 .card.card-add .card-content {
-  border: none;
+  border: dashed 2px #e7e9eb;
   padding: 0;
-  height: 100%;
+  padding-top: 30px;
   text-align: center;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -131,21 +134,62 @@ body,
 }
 .card.card-add .card-title {
   font-size: 16px;
-  margin-top: 30px;
 }
 .card.card-add .add-new-icon {
   color: #81878e;
   font-size: 22px;
   margin-right: 10px;
 }
-.card.card-idp .card-thumbnail {
+.card.card-add:hover .card-content {
+  border-style: solid;
+}
+.card.card-add:hover .add-new-icon {
+  color: #fff;
+}
+.card.card-gray .card-thumbnail {
   background-color: #445464;
 }
-.card.card-federation .card-thumbnail {
+.card.card-gray:hover .card-content {
+  background-color: #445464;
+  border-color: #445464;
+  color: #fff;
+}
+.card.card-gray:hover .card-badge {
+  background-color: #fff;
+  color: #445464;
+}
+.card.card-gray.card-add:hover {
+  border-color: #445464;
+}
+.card.card-purple .card-thumbnail {
   background-color: #6d79e8;
 }
-.card.card-certificate .card-thumbnail {
+.card.card-purple:hover .card-content {
+  background-color: #6d79e8;
+  border-color: #6d79e8;
+  color: #fff;
+}
+.card.card-purple:hover .card-badge {
+  background-color: #fff;
+  color: #6d79e8;
+}
+.card.card-purple.card-add:hover {
+  border-color: #6d79e8;
+}
+.card.card-blue .card-thumbnail {
   background-color: #278efc;
+}
+.card.card-blue:hover .card-content {
+  background-color: #278efc;
+  border-color: #278efc;
+  color: #fff;
+}
+.card.card-blue:hover .card-badge {
+  background-color: #fff;
+  color: #278efc;
+}
+.card.card-blue.card-add:hover {
+  border-color: #278efc;
 }
 .form-horizontal .control-label {
   text-align: left;

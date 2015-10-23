@@ -1,21 +1,25 @@
 
 <div class="container-fluid" ng-controller="homeController as model">
+	<h1>{{ model.title }}</h1>
 	<div class="details-container">
 		<section class="section">
 			<header>
 				<h4 class="section-title">Identity Providers (IdP)</h4>
 			</header>
 			<div class="row">
-				<div class="col-sm-4 col-md-3" ng-repeat="idp in model.identityProviders">
-					<card name="idp.name" 
-						  type="idp.type" 
-						  url="#/identity-provider" 
-						  icon="icon-database" 
-						  css-class="card-idp" 
-						  badge-text="idp.badgeText" />
+				<div class="col-sm-6 col-md-4" ng-repeat="idp in model.identityProviders">
+					<card card-data-item="idp"
+						  card-theme="gray"					
+						  card-title="idp.name"
+						  card-subtitle="idp.type"
+						  card-badge-text="idp.badgeText"
+						  card-icon-class="icon-database"					
+						  on-card-click="model.idpClicked(e)"
+						  actions="[ { name: 'edit', tooltip: 'Edit Identity Provider' }, { name: 'users', tooltip: 'Manage Users' }, { name: 'destroy', tooltip: 'Delete Identity Provider' }]"
+						  on-action-click="model.idpActionClicked(e)" />
 				</div>
-				<div class="col-sm-4 col-md-3">
-					<new-card url="#/identity-provider" text="Add New Idp" />
+				<div class="col-sm-6 col-md-4">
+					<card card-theme="gray" card-new="true" card-title="'Add New Idp'" />
 				</div>
 			</div>
 		</section>
@@ -24,14 +28,19 @@
 				<h4 class="section-title">Federations</h4>
 			</header>
 			<div class="row">
-				<div class="col-sm-4 col-md-3" ng-repeat="idp in model.federations">
-					<card name="idp.name" 
-						  type="idp.type" 
-						  icon="icon-key" 
-						  css-class="card-federation" />
+				<div class="col-sm-6 col-md-4" ng-repeat="idp in model.federations">
+					<card card-data-item="idp"
+						  card-theme="purple"					
+						  card-title="idp.name"
+						  card-subtitle="idp.type"
+						  card-badge-text="idp.badgeText"
+						  card-icon-class="icon-database"					
+						  url="'#/identity-provider'"
+						  actions="[ { name: 'edit' }, { name: 'users' }, { name: 'destroy' }]"
+						  on-action-click="model.idpActionClicked(e)" />
 				</div>
-				<div class="col-sm-4 col-md-3">
-					<new-card text="Add New Federation" />
+				<div class="col-sm-6 col-md-4">
+					<card card-theme="purple" card-new="true" card-title="'Add New Federation'" />
 				</div>
 			</div>
 		</section>
@@ -40,14 +49,19 @@
 				<h4 class="section-title">Certificates</h4>
 			</header>
 			<div class="row">
-				<div class="col-sm-4 col-md-3" ng-repeat="idp in model.federations">
-					<card name="idp.name" 
-						  type="idp.type" 
-						  icon="icon-article-document" 
-						  css-class="card-certificate" />
+				<div class="col-sm-6 col-md-4" ng-repeat="idp in model.federations">
+					<card card-data-item="idp"
+						  card-theme="blue"					
+						  card-title="idp.name"
+						  card-subtitle="idp.type"
+						  card-badge-text="idp.badgeText"
+						  card-icon-class="icon-database"					
+						  url="'#/identity-provider'"
+						  actions="[ { name: 'edit' }, { name: 'users' }, { name: 'destroy' }]"
+						  on-action-click="model.idpActionClicked(e)" />
 				</div>
-				<div class="col-sm-4 col-md-3">
-					<new-card text="Add New Certificate" />
+				<div class="col-sm-6 col-md-4">
+					<card card-theme="blue" card-new="true" card-title="'Add New Certificate'" />
 				</div>
 			</div>
 		</section>

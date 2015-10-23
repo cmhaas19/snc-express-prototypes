@@ -16,6 +16,7 @@
                                                      "snc.prototype.sso.directive",
                                                      "snc.prototype.sso.filter"]);
 
+
     module.config(["$routeProvider", function($routeProvider) {
 
         var rootUrl = "/prototypes/single-sign-on";
@@ -26,7 +27,7 @@
                 bodyClass: "home",
                 backEnabled: false
             })
-            .when("/identity-provider", {
+            .when("/identity-provider/:sysid", {
                 templateUrl: rootUrl + "/components/identity-provider/idp.html",
                 bodyClass: "idp",
                 backEnabled: true

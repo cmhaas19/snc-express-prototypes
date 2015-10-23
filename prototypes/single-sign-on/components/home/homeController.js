@@ -3,10 +3,12 @@
     var homeController = function (idpService, federationService) {
         var model = this;
 
-        model.settings = {
-        	enabled: true,
-        	debugging: false,
-        	autoImport: true
+        model.idpClicked = function(e){
+            console.log(e);
+        };
+
+        model.idpActionClicked = function(e){
+            console.log(e);
         };
 
         idpService.getAll().then(function(data){
@@ -15,9 +17,7 @@
                 return {
                     name: item.name,
                     type: item.type,
-                    badgeText: (item.isDefault ? "Default" : ""),
-                    icon: "fa fa-database",
-                    cssClass: "card-idp"
+                    badgeText: (item.isDefault ? "Default" : "")
                 };
             });
 
