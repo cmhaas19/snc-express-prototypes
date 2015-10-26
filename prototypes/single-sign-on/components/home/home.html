@@ -66,4 +66,49 @@
 			</div>
 		</section>
 	</div>
+	<div class="config-container" ng-show="isHidden">
+	    <div class="config-header">
+	        <span> Configure </span>
+	        <a href="#/" class="icon-cross pull-right" ng-click="isHidden = !isHidden"></a>
+	    </div>
+
+	    <div class="config-obj">
+	        <label for="allow_sso"> Single Sign-On (SSO)</label>
+	        <div class="input-switch pull-right">
+	            <input id="allow_sso_switch" type="checkbox" checked="checked" name="allow_sso_switch">
+	            <label aria-hidden="true" class="switch" for="allow_sso_switch"></label>
+	        </div>
+	        <div class="config-description"> Allow users to login with SSO credentials. </div>
+	    </div>
+
+	    <div class="config-obj">
+	        <label for="auto_import_user"> Auto-Import Users </label>
+	        <div class="input-switch pull-right">
+	            <input id="auto_import_user_switch" type="checkbox" checked="checked" name="auto_import_user_switch">
+	            <label aria-hidden="true" class="switch" for="auto_import_user_switch"></label>
+	        </div>
+	        <div class="config-description"> Enable this option to automatically populate users from available identity Providers </div>
+	    </div>
+
+	    <div class="config-obj">
+	        <label for="sso_debugging"> SSO Debugging </label>
+	        <div class="input-switch pull-right">
+	            <input id="sso_debugging_switch" type="checkbox" checked="checked" name="sso_debugging_switch">
+	            <label aria-hidden="true" class="switch" for="sso_debugging_switch"></label>
+	        </div>
+	        <div class="config-description"> Enable this option to show debug messages for SSO </div>
+	    </div>
+
+	    <div class="config-obj">
+	        <label for="user_identified"> User Identifier </label>
+	        <div class="config-description"> Set the identifier to be used for assertions </div>
+	        <div class="">
+	            <select id="user_identified_select" class="form-control" name="user_identified">
+	                <option>Username</option>
+	                <option>User Identifier 2</option>
+	                <option>User Identifier 3</option>
+	            </select>
+	        </div>
+	    </div>
+	</div>
 </div>

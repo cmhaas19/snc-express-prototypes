@@ -16,6 +16,49 @@ body,
 	height: 100%;
 }
 
+.config-container {
+	transition: 1s;
+	opacity:1;
+	border:1px solid #bdc0c4;
+	position: absolute;
+	right: 0;
+	top: 50px;
+	width: 300px;
+	vertical-align: middle;
+
+	.config-header {
+		width: 100%;
+		background-color: #e7e9eb;
+		font-size: 26px; 
+		padding: 10px 25px;
+	}
+
+	.config-obj {
+		border-bottom: 1px solid #bdc0c4;
+		padding: 15px;
+
+		.input-switch {
+			display: inline-block;
+		}
+
+		label {
+			font-size: 13px; 
+			font-weight: bold;
+			line-height: 20px;
+		}
+
+		.config-description {
+			padding: 5px;
+			font-size: 13px; 
+		}
+	}
+}
+
+.config-container.ng-hide {
+	right: -100%;
+	opacity: 0;
+}
+
 .nav-main-container {
 	.clearfix();
 }
