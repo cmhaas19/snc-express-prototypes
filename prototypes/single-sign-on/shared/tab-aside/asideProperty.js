@@ -25,7 +25,7 @@
                         "<div class='label-row'>" +
                             "<label for='allow_sso'>{{ propertyTitle }}</label>" +
                             "<div class='input-switch pull-right'>" +
-                                "<input id='{{ propertyId }}_switch' type='checkbox' checked='checked' name='{{ propertyId }}_switch'>" +
+                                "<input id='{{ propertyId }}_switch' type='checkbox' ng-model='propertyValue' name='{{ propertyId }}_switch'>" +
                                 "<label aria-hidden='true' class='switch' for='{{ propertyId }}_switch'></label>" +
                             "</div>" +
                         "</div>" +
@@ -34,10 +34,8 @@
                     "<div class='select-type' ng-if='isSelect'>" +
                         "<label for='allow_sso'>{{ propertyTitle }}</label>" +
                         "<div class='tab-aside-description'>{{ propertyDesc }}</div>" +
-                        "<select id='{{ propertyId }}_select' class='form-control' name='{{ propertyId }}'>" +
-                            "<option>Username</option>" +
-                            "<option>User Identifier 2</option>" +
-                            "<option>User Identifier 3</option>" +
+                        "<select id='{{ propertyId }}_select' class='form-control' name='{{ propertyId }}' ng-model='current'>" +
+                            "<option  ng-repeat='option in propertyValue' value='{{option.value}}' ng-selected='{{option.current}}'>{{option.value}}</option>" +
                         "</select>" +
                     "</div>" +
                 "</div>"

@@ -13,7 +13,7 @@
             id: "auto_import_user",
             type: "bool",
             desc: "Enable this option to automatically populate users from available identity Providers",
-            value: true
+            value: false
         }, {
             title: "SSO Debugging",
             id: "sso_debugging",
@@ -25,7 +25,7 @@
             id: "user_identifier",
             type: "select",
             desc: "Set the identifier to be used for assertions",
-            value: true
+            value: [{ value: 'username', current: true }, { value: 'identifier2', current: false }, { value: 'identifier3', current: false }]
         }];
         
         var getAll = function(){
