@@ -34,7 +34,8 @@
                    </div>      
                    <div class="nav navbar-right">
                        <a href="#/" class="btn btn-default navbar-btn" ng-show="$root.backEnabled">Home</a>
-                       <a href="#/" class="btn btn-default icon-boolean" ng-model="isHidden" ng-click="isHidden = !isHidden"></a>
+                       <button class="btn btn-default icon-boolean" ng-model="isHidden" ng-init="isHidden=true" 
+                               ng-show="$root.asideEnabled" ng-click="isHidden=!isHidden"></button>
                    </div>
                </div>
             </nav>
@@ -59,11 +60,14 @@
 
     <script src="/prototypes/single-sign-on/app.js"></script>
     <script src="/prototypes/single-sign-on/shared/card/card.js"></script>
+    <script src="/prototypes/single-sign-on/shared/tab-aside/tabAside.js"></script>
+    <script src="/prototypes/single-sign-on/shared/tab-aside/asideProperty.js"></script>
     <script src="/prototypes/single-sign-on/components/home/homeController.js"></script>
     <script src="/prototypes/single-sign-on/components/identity-provider/idpController.js"></script>
     <script src="/prototypes/single-sign-on/components/identity-provider/idpService.js"></script>
 
     <script src="/prototypes/single-sign-on/components/federation/federationService.js"></script>
+    <script src="/prototypes/single-sign-on/shared/tab-aside/propertyService.js"></script>
     
 </body>
 

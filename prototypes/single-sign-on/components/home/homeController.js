@@ -1,7 +1,17 @@
 (function (module) {
 
-    var homeController = function (idpService, federationService) {
+    var homeController = function (idpService, federationService, propertyService) {
         var model = this;
+
+        model.isHidden = false;
+
+        model.toggle = function(e){
+            model.isHidden = model.isHidden === false ? true: false;
+        };
+
+        model.getHide = function(){
+            return model.isHidden;
+        };
 
         model.idpClicked = function(e){
             console.log(e);
@@ -28,8 +38,12 @@
     		model.federations = data;
         });
 
+        propertyService.getAll().then(function(data){
+            model.properties = data;
+        });
+
     };
 
-    module.controller("homeController", ["idpService", "federationService", homeController]);
+    module.controller("homeController", ["idpService", "federationService", "propertyService", homeController]);
 
 }(angular.module("snc.prototype.sso.controller")));

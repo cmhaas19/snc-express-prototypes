@@ -11,43 +11,6 @@ body,
 .view-frame > .container-fluid {
   height: 100%;
 }
-.config-container {
-  transition: 1s;
-  opacity: 1;
-  border: 1px solid #bdc0c4;
-  background-color: white;
-  position: absolute;
-  right: 0;
-  top: 50px;
-  width: 300px;
-  vertical-align: middle;
-}
-.config-container .config-header {
-  width: 100%;
-  background-color: #e7e9eb;
-  font-size: 26px;
-  padding: 10px 25px;
-}
-.config-container .config-obj {
-  border-bottom: 1px solid #bdc0c4;
-  padding: 15px;
-}
-.config-container .config-obj .input-switch {
-  display: inline-block;
-}
-.config-container .config-obj label {
-  font-size: 13px;
-  font-weight: bold;
-  line-height: 20px;
-}
-.config-container .config-obj .config-description {
-  padding: 5px;
-  font-size: 13px;
-}
-.config-container.ng-hide {
-  right: -100%;
-  opacity: 0;
-}
 .nav-main-container:before,
 .nav-main-container:after {
   content: " ";
@@ -339,4 +302,42 @@ body,
 .section-title {
   margin-bottom: 15px;
   font-size: 18px;
+}
+.tab-aside-container {
+  transition: 1s;
+  border: 1px solid #bdc0c4;
+  background-color: white;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  width: 310px;
+  height: 100%;
+}
+.tab-aside-container .tab-aside-header {
+  width: 100%;
+  background-color: #e7e9eb;
+  font-size: 26px;
+  padding: 10px 25px;
+}
+.tab-aside-container .property-obj {
+  border-bottom: 1px solid #bdc0c4;
+  padding: 15px;
+  font-size: 13px;
+}
+.tab-aside-container .property-obj label {
+  font-weight: bold;
+  padding-bottom: 0px;
+}
+.tab-aside-container .property-obj .bool-type .input-switch {
+  display: inline-block;
+}
+.tab-aside-container .property-obj .bool-type .tab-aside-description {
+  padding: 10px 0px;
+}
+.tab-aside-container .property-obj .select-type .tab-aside-description {
+  padding-bottom: 10px;
+}
+.tab-aside-container.ng-hide {
+  right: -100%;
+  opacity: 0;
 }

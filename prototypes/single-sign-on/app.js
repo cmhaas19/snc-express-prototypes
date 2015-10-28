@@ -25,12 +25,14 @@
             .when("/", {
                 templateUrl: rootUrl + "/components/home/home.html",
                 bodyClass: "home",
-                backEnabled: false
+                backEnabled: false,
+                asideEnabled: true
             })
             .when("/identity-provider/:sysid", {
                 templateUrl: rootUrl + "/components/identity-provider/idp.html",
                 bodyClass: "idp",
-                backEnabled: true
+                backEnabled: true,
+                asideEnabled: false
             })             
             .otherwise({
                 redirectTo: "/"
@@ -42,6 +44,7 @@
         $rootScope.$on("$routeChangeSuccess", function (event, currentRoute, previousRoute) {
             $rootScope.bodyClass = currentRoute.bodyClass;
             $rootScope.backEnabled = currentRoute.backEnabled;
+            $rootScope.asideEnabled = currentRoute.asideEnabled;
         });
     }]);
 
