@@ -1,54 +1,70 @@
 @import "mixins.less";
 
-@color-lightest: 	#e7e9eb;
-@color-lighter: 	#e6e8ea;
-@color-light: 	#bdc0c4;
+@gray10:	#e7e9eb;
+@gray20:	#f4f6f7;
+@gray30:	#828890;
 
-.tab-aside-container {
-	transition: 1s;
-	border:1px solid @color-light;
+@tab-aside-width: 	310px;
+
+.tab-aside-container {	
+	border: 1px solid @gray10;
 	background-color: white;
 	position: absolute;
 	right: 0;
-	top: 50px;
-	width: 310px;
+	top: 0;
+	width: @tab-aside-width;
 	height: 100%;
 	overflow: auto;
+	.transition(right 0.5s ease-in-out);
 
-	.tab-aside-header {
-		width: 100%;
-		background-color: @color-lightest;
-		font-size: 26px; 
-		padding: 10px 25px;
+	&.closed {
+		right: -@tab-aside-width;
 	}
 
-	.property-obj {
-		border-bottom: 1px solid @color-light;
-		padding: 15px;
-		font-size: 13px; 
+	.tab-aside-header {
+		color: @gray30;
+		background-color: @gray20;		
+		border-bottom: solid 1px @gray10;
+		padding: 15px 20px;
+		position: relative;
+	}
 
-		label {
-			font-weight: bold;
-			padding-bottom: 0px;
-		}
+	.tab-aside-title {
+		font-size: 24px; 
+		color: inherit;
+	}
 
-		.bool-type {
-			.input-switch {
-				display: inline-block;
-			}
-			.tab-aside-description {
-				padding: 10px 0px;
-			}
-		}
-		.select-type {
-			.tab-aside-description {
-				padding-bottom: 10px;
-			}
-		}
+	.tab-aside-close {
+		font-size: 18px; 
+		color: inherit;
+		position: absolute;
+		right: 15px;
+		top: 15px;
+		cursor: pointer;
 	}
 }
 
-.tab-aside-container.ng-hide {
-	right: -100%;
-	opacity: 0;
+.property-obj {
+	border-bottom: 1px solid @gray10;
+	padding: 15px;
+	font-size: 13px; 
+
+	label {
+		font-weight: bold;
+		padding-bottom: 0px;
+	}
+
+	.bool-type {
+		.input-switch {
+			display: inline-block;
+		}
+		.tab-aside-description {
+			padding: 10px 0px;
+		}
+	}
+	.select-type {
+		.tab-aside-description {
+			padding-bottom: 10px;
+		}
+	}
 }
