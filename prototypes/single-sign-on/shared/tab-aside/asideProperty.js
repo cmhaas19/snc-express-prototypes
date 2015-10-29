@@ -22,12 +22,10 @@
             template:
                 "<div class='property-obj'>" +
                     "<div class='bool-type' ng-if='isBool'>" +
-                        "<div class='label-row'>" +
-                            "<label for='allow_sso'>{{ propertyTitle }}</label>" +
-                            "<div class='input-switch pull-right'>" +
-                                "<input id='{{ propertyId }}_switch' type='checkbox' ng-model='propertyValue' name='{{ propertyId }}_switch'>" +
-                                "<label aria-hidden='true' class='switch' for='{{ propertyId }}_switch'></label>" +
-                            "</div>" +
+                        "<label for='allow_sso'>{{ propertyTitle }}</label>" +
+                        "<div class='input-switch pull-right'>" +
+                            "<input id='{{ propertyId }}_switch' type='checkbox' ng-model='propertyValue' name='{{ propertyId }}_switch'>" +
+                            "<label aria-hidden='true' class='switch' for='{{ propertyId }}_switch'></label>" +
                         "</div>" +
                         "<div class='tab-aside-description'>{{ propertyDesc }}</div>" +
                     "</div>" +

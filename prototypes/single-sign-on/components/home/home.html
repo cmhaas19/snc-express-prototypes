@@ -66,7 +66,7 @@
 			</div>
 		</section>
 	</div>
-	<div class="tab-aside-container" ng-hide="isHidden || model.getHide()">
+	<div class="tab-aside-container" ng-hide="isHidden || model.isHidden">
 		<tab-aside aside-title="Configure" aside-category="SSO" on-hide="model.toggle(e)">
 			<div ng-repeat="prop in model.properties">
 				<aside-property property-title="prop.title" 

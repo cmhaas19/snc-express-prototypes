@@ -32,6 +32,24 @@
             type: "string",
             desc: "The amount of time the listener will wait for a response from the LDAP server. After this amount of time the listener will rocess any notifications it has received and will reissue the listen request to the server. The value should be specified in minutes.",
             value: "5"
+        }, {
+            title: "LDAP Password Authentication",
+            id: "ldap_password_auth",
+            type: "boolean",
+            desc: "",
+            value: true
+        }, {
+            title: "Automatically Import Users",
+            id: "auto_import_user",
+            type: "boolean",
+            desc: "Enable this option to automatically import users from the LDAP servers if the user is not present in the 'sys_user' table.",
+            value: true
+        }, {
+            title: "Page Results",
+            id: "listener_response_interval",
+            type: "boolean",
+            desc: "Enable this option to page retrieved results if the LDAP server supports paging.",
+            value: false
         }];
         
         var getAll = function(){

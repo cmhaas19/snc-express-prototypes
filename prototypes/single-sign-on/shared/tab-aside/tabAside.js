@@ -12,7 +12,6 @@
             },
 
             controller: ["$scope", function($scope){
-
                 $scope.hideAside = function(event){
                     if(typeof($scope.onHide) == "function"){
                         $scope.onHide({ e: { dataItem: $scope.isHidden  } });

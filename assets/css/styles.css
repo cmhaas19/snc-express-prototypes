@@ -312,6 +312,7 @@ body,
   top: 50px;
   width: 310px;
   height: 100%;
+  overflow: auto;
 }
 .tab-aside-container .tab-aside-header {
   width: 100%;

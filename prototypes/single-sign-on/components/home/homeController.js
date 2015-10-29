@@ -9,10 +9,6 @@
             model.isHidden = model.isHidden === false ? true: false;
         };
 
-        model.getHide = function(){
-            return model.isHidden;
-        };
-
         model.idpClicked = function(e){
             console.log(e);
         };
