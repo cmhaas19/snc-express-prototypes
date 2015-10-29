@@ -6,30 +6,53 @@
             replace: true,
             transclude: true,
             scope: {
-                asideTitle: "=",
-                asidePropertyCategory: "=",
-                onHide: "&" 
+                title: "=?asideTitle",
+                toggleButton: "@",
+                visible: "=?" 
             },
 
-            controller: ["$scope", function($scope){
-                $scope.hideAside = function(event){
-                    if(typeof($scope.onHide) == "function"){
-                        $scope.onHide({ e: { dataItem: $scope.isHidden  } });
-                    }
-                }
+            controller: ["$scope", function($scope) {
+
+                $scope.visible = angular.isDefined($scope.visible) && $scope.visible;
+
+                $scope.toggle = function(e) {
+                    $scope.visible = !$scope.visible;
+                };
+
             }],
 
-            link: function($scope, elem, attr, ctrl, transclude) {
-                elem.find('.property-content').append(transclude());
+            link: function(scope, elem, attr) {
+                var toggleButton = scope.toggleButton;
+
+                if(toggleButton && toggleButton.length){
+                    
+                    var $button = $(toggleButton);
+
+                    $button.on("click", function(e){
+                        e.preventDefault();
+                        scope.toggle(e);
+                        scope.$apply();
+                    });
+
+                    scope.$watch("visible", function(newValue){
+                        if(newValue === true)
+                            $button.addClass("active");
+                        else
+                            $button.removeClass("active");
+                    });
+                }
+
             },
 
             template:
-                "<div class=''>" +
-                    "<div class='tab-aside-header'>" +
-                        "<span> Configure </span>" +
-                        "<a href='#/'' class='icon-cross pull-right' ng-click='hideAside($event)'></a>" +
+                "<div class='tab-aside-container' ng-class='{ closed: !visible }'>" +
+                    "<div class='tab-aside-header clearfix'>" +
+                        "<span class='tab-aside-title' ng-show='title.length'>{{ title }}</span>" +
+                        "<span class='tab-aside-close icon-cross' ng-click='toggle()'></a>" +
                     "</div>" +
-                    "<div class='property-content'></div>" +
+                    "<div class='tab-aside-content'>" + 
+                        "<ng-transclude></ng-transclude>" +
+                    "</div>" +
                 "</div>"
 
         };

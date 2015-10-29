@@ -27,16 +27,13 @@
         <div class="main-container">
 
             <nav class="navbar navbar-default" role="navigation">
-               <div class="container-fluid">
-                   <div class="navbar-header">            
-                       <button class="btn btn-default icon-chevron-left navbar-btn" ng-show="$root.backEnabled" onclick="history.back();"></button>
-                       <h1 style="display:inline-block;" class="navbar-title">Single Sign-On Console</h1>
-                   </div>      
-                   <div class="nav navbar-right">
-                       <a href="#/" class="btn btn-default navbar-btn" ng-show="$root.backEnabled">Home</a>
-                       <button class="btn btn-default icon-boolean" ng-model="isHidden" ng-init="isHidden=true" 
-                               ng-show="$root.asideEnabled" ng-click="isHidden=!isHidden"></button>
-                   </div>
+               <div class="navbar-header">            
+                   <button class="btn btn-default icon-chevron-left navbar-btn" ng-show="$root.backEnabled" onclick="history.back();"></button>
+                   <h1 style="display:inline-block;" class="navbar-title">Single Sign-On Console</h1>
+               </div>      
+               <div class="nav navbar-right">
+                   <a href="#/" class="btn btn-default navbar-btn" ng-show="$root.backEnabled">Home</a>
+                   <a href id="config-button" class="icon-boolean"></a>
                </div>
             </nav>
             <div class="view-container">

@@ -24,6 +24,20 @@ body,
   position: relative;
   overflow: auto;
 }
+.container-fluid {
+  position: relative;
+}
+#config-button {
+  color: #333;
+  line-height: 40px;
+  padding: 0 15px;
+  display: block;
+  border-bottom: solid 2px transparent;
+}
+#config-button.active {
+  color: #278efc;
+  border-bottom-color: #278efc;
+}
 .card {
   display: block;
   color: #343d47;
@@ -215,7 +229,7 @@ body,
   bottom: 0;
 }
 .main-container .navbar {
-  padding: 6px 0;
+  padding: 0;
   border-radius: 0;
   border-bottom: 1px solid #bdc0c4;
   box-shadow: rgba(0, 0, 0, 0.08) 0 1px 2px;
@@ -224,9 +238,11 @@ body,
 .main-container .navbar .navbar-title {
   font-size: 18px;
   font-weight: normal;
-  margin: 9px 0 9px 10px;
+  margin: 0;
+  padding-left: 15px;
   vertical-align: middle;
   color: #485563;
+  line-height: 40px;
 }
 .main-container .navbar-default {
   background-color: #e6e8ea;
@@ -304,41 +320,56 @@ body,
   font-size: 18px;
 }
 .tab-aside-container {
-  transition: 1s;
-  border: 1px solid #bdc0c4;
+  border: 1px solid #e7e9eb;
   background-color: white;
   position: absolute;
   right: 0;
-  top: 50px;
+  top: 0;
   width: 310px;
   height: 100%;
   overflow: auto;
+  -webkit-transition: right 0.5s ease-in-out;
+  -moz-transition: right 0.5s ease-in-out;
+  -ms-transition: right 0.5s ease-in-out;
+  -o-transition: right 0.5s ease-in-out;
+}
+.tab-aside-container.closed {
+  right: -310px;
 }
 .tab-aside-container .tab-aside-header {
-  width: 100%;
-  background-color: #e7e9eb;
-  font-size: 26px;
-  padding: 10px 25px;
+  color: #828890;
+  background-color: #f4f6f7;
+  border-bottom: solid 1px #e7e9eb;
+  padding: 15px 20px;
+  position: relative;
 }
-.tab-aside-container .property-obj {
-  border-bottom: 1px solid #bdc0c4;
+.tab-aside-container .tab-aside-title {
+  font-size: 24px;
+  color: inherit;
+}
+.tab-aside-container .tab-aside-close {
+  font-size: 18px;
+  color: inherit;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+.property-obj {
+  border-bottom: 1px solid #e7e9eb;
   padding: 15px;
   font-size: 13px;
 }
-.tab-aside-container .property-obj label {
+.property-obj label {
   font-weight: bold;
   padding-bottom: 0px;
 }
-.tab-aside-container .property-obj .bool-type .input-switch {
+.property-obj .bool-type .input-switch {
   display: inline-block;
 }
-.tab-aside-container .property-obj .bool-type .tab-aside-description {
+.property-obj .bool-type .tab-aside-description {
   padding: 10px 0px;
 }
-.tab-aside-container .property-obj .select-type .tab-aside-description {
+.property-obj .select-type .tab-aside-description {
   padding-bottom: 10px;
-}
-.tab-aside-container.ng-hide {
-  right: -100%;
-  opacity: 0;
 }
