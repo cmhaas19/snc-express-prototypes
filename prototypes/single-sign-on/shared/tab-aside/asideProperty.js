@@ -13,11 +13,11 @@
             },
 
             controller: ["$scope", function($scope){
-                $scope.isBool = $scope.propertyType === "bool"; 
+                $scope.isBool = $scope.propertyType === "boolean"; 
                 $scope.isSelect = $scope.propertyType === "select"; 
+                $scope.isString = $scope.propertyType === "string"; 
 
             }],
-
 
             template:
                 "<div class='property-obj'>" +
@@ -37,6 +37,11 @@
                         "<select id='{{ propertyId }}_select' class='form-control' name='{{ propertyId }}' ng-model='current'>" +
                             "<option  ng-repeat='option in propertyValue' value='{{option.value}}' ng-selected='{{option.current}}'>{{option.value}}</option>" +
                         "</select>" +
+                    "</div>" +
+                    "<div class='select-type' ng-if='isString'>" +
+                        "<label for='allow_sso'>{{ propertyTitle }}</label>" +
+                        "<div class='tab-aside-description'>{{ propertyDesc }}</div>" +
+                        "<input id='{{ propertyId }}_string' class='form-control' type='text' value='{{ propertyValue }}' name='{{ propertyId }}' />" +
                     "</div>" +
                 "</div>"
         };

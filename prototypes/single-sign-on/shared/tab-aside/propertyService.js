@@ -5,19 +5,19 @@
     	var data = [{
     		title: "Single Sign-On (SSO)",
             id: "sso_allow",
-    		type: "bool",
+    		type: "boolean",
             desc: "Allow users to login with SSO credentials",
             value: true
     	}, {
             title: "Auto-Import Users",
             id: "auto_import_user",
-            type: "bool",
+            type: "boolean",
             desc: "Enable this option to automatically populate users from available identity Providers",
             value: false
         }, {
             title: "SSO Debugging",
             id: "sso_debugging",
-            type: "bool",
+            type: "boolean",
             desc: "Enable this option to show debug messages for SSO",
             value: true
         }, {
@@ -26,6 +26,12 @@
             type: "select",
             desc: "Set the identifier to be used for assertions",
             value: [{ value: 'username', current: true }, { value: 'identifier2', current: false }, { value: 'identifier3', current: false }]
+        }, {
+            title: "Listener Response Interval",
+            id: "listener_response_interval",
+            type: "string",
+            desc: "The amount of time the listener will wait for a response from the LDAP server. After this amount of time the listener will rocess any notifications it has received and will reissue the listen request to the server. The value should be specified in minutes.",
+            value: "5"
         }];
         
         var getAll = function(){
