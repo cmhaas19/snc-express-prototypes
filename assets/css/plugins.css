@@ -1,0 +1,28 @@
+
+
+
+body {
+	margin: 20px;
+}
+
+.grid-header {
+	margin-bottom: 10px;
+}
+
+.grid-header h2 {
+	margin: 0 0 5px 0;
+}
+
+.box-count {
+	border: solid 1px #ededed;
+	border-radius: 6px;
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 30px;
+}
+
+.box-count h3 {
+	font-size: 32px;
+	font-weight: bold;
+	color: green;
+}

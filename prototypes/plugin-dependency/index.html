@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title ng-bind="$root.title">SNC - Prototype - Single Sign-On</title>
+    <title>SNC - Prototype - Plugin Dependency</title>
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/css/heisenberg.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/plugins.css" rel="stylesheet" type="text/css" />
     <link href="/assets/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/kendo/kendo.bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
@@ -17,13 +17,24 @@
 <body>
 
     <div ng-controller="controller as ctrl">
-        <div class="container">
+        <div class="container-fluid">
+            <div class="grid-header">
+                <h2>Available Plugins</h2>
+                <small>Select plugins from the list below to build a hypothetical dependency chain</small>
+            </div>
             <div class="row">
                 <div class="col-xs-10">
                     <div kendo-grid="grid" k-options="ctrl.gridOptions"></div>
                 </div>
                 <div class="col-xs-2">
-                    
+                    <div class="box-count">
+                        <h3>{{ ctrl.selectedCount }}</h3>
+                        <p>Plugins Selected</p>
+                    </div>
+                    <div class="box-count">
+                        <h3>{{ ctrl.selectedDependencyCount }}</h3>
+                        <p>Plugins including Dependencies</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -31,6 +42,7 @@
 
     
     <script src="/assets/scripts/jquery.min.js"></script>
+    <script src="/assets/scripts/lodash.js"></script>
 
     <script src="/assets/scripts/angular/angular.js"></script>
     <script src="/assets/scripts/angular/angular-animate.js"></script>
