@@ -1,6 +1,6 @@
 (function (module) {
 
-    var controller = function (pluginService, $timeout) {
+    var controller = function (pluginService, $timeout, $scope) {
         var ctrl = this;
 
         ctrl.plugins = [];
@@ -47,8 +47,11 @@
 
         var addSelectedPlugin = function(plugin) {
             var existingPlugin = _.find(ctrl.selectedPlugins, function(p){ return p.id == plugin.id; });
-            if(existingPlugin == undefined)
+
+            if(existingPlugin == undefined) {
                 ctrl.selectedPlugins.push(plugin);
+                //ctrl.treeData.add(plugin);
+            }
         };
 
         var removeSelectedPlugin = function(plugin) {
@@ -58,13 +61,22 @@
         ctrl.selectPlugin = function(plugin) {                   
             var p = findPlugin(plugin.id);
 
-            if(plugin.selected)
+            if(plugin.selected) 
                 addSelectedPlugin(p);
             else
                 removeSelectedPlugin(p);
 
             updateCounts();
         };
+
+        ctrl.treeData = new kendo.data.HierarchicalDataSource({
+            data: [],
+            schema: {
+                model: {
+                    children: "dependencies"
+                }
+            }
+        });
 
         ctrl.gridOptions = {
         	autoBind: true,
@@ -113,6 +125,6 @@
         };
     };
 
-    module.controller("controller", ["pluginService", "$timeout", controller]);
+    module.controller("controller", ["pluginService", "$timeout", "$scope", controller]);
 
 }(angular.module("snc.prototype.plugin")));

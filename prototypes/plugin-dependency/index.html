@@ -37,6 +37,17 @@
                     </div>
                 </div>
             </div>
+            <div class="grid-header" style="margin-top: 25px;">
+                <h2>Selected Plugin Hierarchy</h2>
+                <small>Base on the selections above, below is the hypothetical plugin hierarchy</small>
+            </div>
+            <div class="row">
+                <div class="col-xs-10">
+                    <div kendo-tree-view="tree"
+                         k-data-source="ctrl.treeData">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

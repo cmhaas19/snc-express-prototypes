@@ -19,6 +19,9 @@ body {
 	text-align: center;
 	padding: 10px;
 	margin-bottom: 30px;
+	-webkit-box-shadow: 2px 2px 2px 0px rgba(50, 50, 50, 0.4);
+-moz-box-shadow:    2px 2px 2px 0px rgba(50, 50, 50, 0.4);
+box-shadow:         2px 2px 2px 0px rgba(50, 50, 50, 0.4);
 }
 
 .box-count h3 {
