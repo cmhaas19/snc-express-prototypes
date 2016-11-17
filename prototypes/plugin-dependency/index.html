@@ -17,40 +17,45 @@
 <body>
 
     <div ng-controller="controller as ctrl">
-        <div class="container-fluid">
-            <div class="grid-header">
-                <h2>Available Plugins</h2>
-                <small>Select plugins from the list below to build a hypothetical dependency chain</small>
-            </div>
-            <div class="row">
-                <div class="col-xs-10">
-                    <div kendo-grid="grid" k-options="ctrl.gridOptions"></div>
-                </div>
-                <div class="col-xs-2">
-                    <div class="box-count">
-                        <h3>{{ ctrl.selectedCount }}</h3>
-                        <p>Plugins Selected</p>
-                    </div>
-                    <div class="box-count">
-                        <h3>{{ ctrl.selectedDependencyCount }}</h3>
-                        <p>Plugins including Dependencies</p>
-                    </div>
+        <div class="grid-header">
+            <h2>Plugin Visualizer</h2>
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="box-count">
+                    <h3 ng-bind="ctrl.selectedCount"></h3>
+                    <p>Plugins Selected</p>
                 </div>
             </div>
-            <div class="grid-header" style="margin-top: 25px;">
-                <h2>Selected Plugin Hierarchy</h2>
-                <small>Base on the selections above, below is the hypothetical plugin hierarchy</small>
+            <div class="col-xs-4">
+                <div class="box-count">
+                    <h3 ng-bind="ctrl.selectedDependencyCount"></h3>
+                    <p>Plugins including hard dependencies</p>
+                </div>
             </div>
-            <div class="row">
-                <div class="col-xs-10">
-                    <div kendo-tree-view="tree"
-                         k-data-source="ctrl.treeData">
-                    </div>
+            <div class="col-xs-4">
+                <div class="box-count">
+                    <h3 ng-bind="ctrl.selectedDependencyCount"></h3>
+                    <p>Plugins including all dependencies</p>
                 </div>
             </div>
         </div>
-    </div>
+        <div kendo-tab-strip k-animation="false">
+            <ul>
+                <li class="k-state-active">Available Plugins</li>
+                <li>Selected Hierarchy</li>
+            </ul>
 
+            <div>
+                <div kendo-grid="grid" k-options="ctrl.gridOptions"></div>
+            </div>
+
+            <div>
+                <div kendo-tree-view="tree" k-data-source="ctrl.treeData"></div>
+            </div>
+        </div>
+    </div>
     
     <script src="/assets/scripts/jquery.min.js"></script>
     <script src="/assets/scripts/lodash.js"></script>

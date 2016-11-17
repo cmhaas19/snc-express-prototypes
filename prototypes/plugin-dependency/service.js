@@ -1,5 +1,28 @@
 (function (module) {
 
+    class Plugin {
+        constructor(id, name, description, sms, express) {
+            this.id = id;
+            this.name = name;
+            this.description = description;
+            this.sms = sms;
+            this.express = express;
+            this.dependencies = [];
+        }
+
+        addDependency(dependency) {
+            this.dependencies.push(dependency);
+        }
+    }
+
+    class Dependency {
+        constructor(type, plugin, requiredPlugin) {
+            this.type = type;
+            this.plugin = plugin;
+            this.requiredPlugin = requiredPlugin;
+        }
+    }
+
     var pluginService = function ($http, $q) {
 
         $http.defaults.headers.common['Authorization'] = 'Basic ' + btoa("admin:admin");
@@ -12,6 +35,7 @@
                 url: baseUrl + "api/now/table/dpp_plugin_dependency",
                 params: {
                     sysparm_query: "ORDERBYplugin_id",
+                    sysparm_limit: 30000
                 }
             };
 
@@ -36,28 +60,45 @@
 
         var getPluginsWithDependencies = function() {
             return $q.all([getPlugins(), getPluginDependencies()]).then(function(results) {
-                var plugins = results[0],
-                    dependencies = results[1];
-                
-                plugins.forEach(function(plugin) {
+                var plugins = [],
+                    dependencies = [];
 
-                    var dependentPlugins = _.filter(dependencies, function(d){ return d.plugin_id == plugin.id; });
-
-                    if(dependentPlugins && dependentPlugins.length) {
-                        dependentPlugins.forEach(function(dependency) {
-                            var p = _.find(plugins, function(t) { return t.id == dependency.required_plugin_id; });
-
-                            if(p) {
-                                if(angular.isUndefined(plugin.dependencies))
-                                    plugin.dependencies = [];
-                                plugin.dependencies.push(p);
-                            }
-                        });
-                    }
+                results[0].forEach(function(p) {
+                    plugins.push(new Plugin(p.id, p.name, p.description, p.sms, p.express));
                 });
 
-                return plugins;
+                results[1].forEach(function(d){
+                    var plugin = _.find(plugins, function(p) { return p.id == d.plugin_id; });
+                    var requiredPlugin = _.find(plugins, function(p) { return p.id == d.required_plugin_id; });
+
+                    if(plugin)
+                        dependencies.push(new Dependency(d.type, plugin, requiredPlugin));
+                });
+
+                return buildDependencyChain(plugins, dependencies);
             });
+        };
+
+        var buildDependencyChain = function(plugins, dependencies) {
+            plugins.forEach(function(plugin) {
+
+                var dependentPlugins = _.filter(dependencies, function(d){ return d.plugin.id == plugin.id; });
+
+                if(dependentPlugins && dependentPlugins.length) {
+                    dependentPlugins.forEach(function(dependency) {
+                        plugin.addDependency(dependency);
+                        /*
+                        if(dependency.requiredPlugin) {
+                            plugin.dependencies.push(angular.extend({}, dependency.requiredPlugin, { parentId: plugin.id }));
+                        }
+                        */
+                    });
+                }
+            });
+
+            console.log(plugins);
+
+            return plugins;
         };
 
         return {

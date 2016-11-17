@@ -114,11 +114,17 @@
                 },{
                     field: "sms",
                     title: "SMS?",
-                    width: 65
+                    width: 65,
+                    attributes: { "class": "text-center" },
+                    headerAttributes: { "class": "text-center" },
+                    template: "#= (sms == 'true') ? \"<span class='fa fa-check'></span>\" : '' #"
                 },{
                     field: "express",
                     title: "Express?",
-                    width: 80
+                    width: 80,
+                    attributes: { "class": "text-center" },
+                    headerAttributes: { "class": "text-center" },
+                    template: "#= (express == 'true') ? \"<span class='fa fa-check'></span>\" : '' #"
                 }
             ],
             dataSource: dataSource
