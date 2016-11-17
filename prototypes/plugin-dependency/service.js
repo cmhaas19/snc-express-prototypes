@@ -1,28 +1,5 @@
 (function (module) {
 
-    class Plugin {
-        constructor(id, name, description, sms, express) {
-            this.id = id;
-            this.name = name;
-            this.description = description;
-            this.sms = sms;
-            this.express = express;
-            this.dependencies = [];
-        }
-
-        addDependency(dependency) {
-            this.dependencies.push(dependency);
-        }
-    }
-
-    class Dependency {
-        constructor(type, plugin, requiredPlugin) {
-            this.type = type;
-            this.plugin = plugin;
-            this.requiredPlugin = requiredPlugin;
-        }
-    }
-
     var pluginService = function ($http, $q) {
 
         $http.defaults.headers.common['Authorization'] = 'Basic ' + btoa("admin:admin");
@@ -60,45 +37,23 @@
 
         var getPluginsWithDependencies = function() {
             return $q.all([getPlugins(), getPluginDependencies()]).then(function(results) {
-                var plugins = [],
+                var plugins = results[0],
                     dependencies = [];
-
-                results[0].forEach(function(p) {
-                    plugins.push(new Plugin(p.id, p.name, p.description, p.sms, p.express));
-                });
 
                 results[1].forEach(function(d){
                     var plugin = _.find(plugins, function(p) { return p.id == d.plugin_id; });
                     var requiredPlugin = _.find(plugins, function(p) { return p.id == d.required_plugin_id; });
 
                     if(plugin)
-                        dependencies.push(new Dependency(d.type, plugin, requiredPlugin));
+                        dependencies.push({ type: d.type, plugin: plugin, requiredPlugin: requiredPlugin });
                 });
 
-                return buildDependencyChain(plugins, dependencies);
+                var builder = new chainBuilder(plugins, dependencies);
+                var nodes = builder.build();
+                //console.log(nodes);
+
+                return nodes;
             });
-        };
-
-        var buildDependencyChain = function(plugins, dependencies) {
-            plugins.forEach(function(plugin) {
-
-                var dependentPlugins = _.filter(dependencies, function(d){ return d.plugin.id == plugin.id; });
-
-                if(dependentPlugins && dependentPlugins.length) {
-                    dependentPlugins.forEach(function(dependency) {
-                        plugin.addDependency(dependency);
-                        /*
-                        if(dependency.requiredPlugin) {
-                            plugin.dependencies.push(angular.extend({}, dependency.requiredPlugin, { parentId: plugin.id }));
-                        }
-                        */
-                    });
-                }
-            });
-
-            console.log(plugins);
-
-            return plugins;
         };
 
         return {

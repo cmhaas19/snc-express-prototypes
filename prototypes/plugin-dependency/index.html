@@ -52,7 +52,10 @@
             </div>
 
             <div>
-                <div kendo-tree-view="tree" k-data-source="ctrl.treeData"></div>
+                <div 
+                    kendo-tree-view="tree" 
+                    k-data-source="ctrl.treeData" 
+                    k-data-text-field="'name'"></div>
             </div>
         </div>
     </div>
@@ -70,6 +73,7 @@
     <script src="/assets/kendo/kendo.web.min.js"></script>
     <script src="/assets/kendo/kendo.angular.min.js"></script>
 
+    <script src="/prototypes/plugin-dependency/classes.js"></script>
     <script src="/prototypes/plugin-dependency/app.js"></script>
     <script src="/prototypes/plugin-dependency/service.js"></script>
     <script src="/prototypes/plugin-dependency/controller.js"></script>

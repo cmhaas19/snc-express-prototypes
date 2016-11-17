@@ -11,60 +11,59 @@
         var dataSource = new kendo.data.DataSource({
             transport: {
                 read: function (e) {
-                	pluginService.getPlugins().then(function(plugins) {
-                		ctrl.plugins = plugins;
-
-                        var data = _.map(plugins, function(p){
+                	pluginService.getPlugins().then(function(nodes) {
+                		ctrl.nodes = nodes;
+                        var data = _.map(nodes, function(node){
                             return {
-                                name: p.name,
-                                id: p.id,
-                                description: p.description,
-                                sms: p.sms,
-                                express: p.express,
-                                depcount: angular.isArray(p.dependencies) ? p.dependencies.length : 0
+                                id: node.id,
+                                name: node.plugin.name,
+                                description: node.plugin.description,
+                                sms: node.plugin.sms,
+                                express: node.plugin.express,
+                                depcount: node.childNodes.length
                             };
-                        });
+                        })
                 		$timeout(function () { e.success(data); }, 200);
                 	});
                 }
             }
         });
 
-        var findPlugin = function(id) {
-            return _.find(ctrl.plugins, function(p) { return p.id == id; });
+        var findNode = function(id) {
+            return _.find(ctrl.nodes, function(p) { return p.id == id; });
         };
 
         var updateCounts = function() {
             var count = 0;
 
             ctrl.selectedPlugins.forEach(function(p){
-                count += angular.isArray(p.dependencies) ? p.dependencies.length : 0;
+                count += p.childNodes.length;
             });
 
             ctrl.selectedCount = ctrl.selectedPlugins.length;
             ctrl.selectedDependencyCount = count;  
         };
 
-        var addSelectedPlugin = function(plugin) {
-            var existingPlugin = _.find(ctrl.selectedPlugins, function(p){ return p.id == plugin.id; });
+        var addSelectedPlugin = function(node) {
+            var existingPlugin = _.find(ctrl.selectedPlugins, function(p){ return p.id == node.id; });
 
             if(existingPlugin == undefined) {
-                ctrl.selectedPlugins.push(plugin);
-                //ctrl.treeData.add(plugin);
+                ctrl.selectedPlugins.push(node);
+                ctrl.treeData.add(node);
             }
         };
 
-        var removeSelectedPlugin = function(plugin) {
-            _.remove(ctrl.selectedPlugins, function(p){ return p.id == plugin.id; });
+        var removeSelectedPlugin = function(node) {
+            _.remove(ctrl.selectedPlugins, function(p){ return p.id == node.id; });
         };
 
-        ctrl.selectPlugin = function(plugin) {                   
-            var p = findPlugin(plugin.id);
+        ctrl.selectPlugin = function(item) { 
+            var node = findNode(item.id);
 
-            if(plugin.selected) 
-                addSelectedPlugin(p);
+            if(item.selected) 
+                addSelectedPlugin(node);
             else
-                removeSelectedPlugin(p);
+                removeSelectedPlugin(node);
 
             updateCounts();
         };
@@ -73,7 +72,7 @@
             data: [],
             schema: {
                 model: {
-                    children: "dependencies"
+                    children: "childNodes"
                 }
             }
         });
